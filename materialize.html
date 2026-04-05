@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materialize - Super Monkey Ball Fan Page</title>
+ 
+    <!-- Materialize CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 
+    <style>
+        /* ===== MATCH SITE COLOR PALETTE =====
+           Primary:   #1d506b (navy blue)
+           Secondary: #33677d (medium blue)
+           Accent:    #ffd60a (yellow)
+           Hover:     #ff6b35 (orange)
+           BG:        #f0f0f0
+           Text:      #333 / #555
+        */
+ 
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+ 
+        /* ---- NAVBAR ---- */
+        nav {
+            background-color: #1d506b;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+ 
+        nav .brand-logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ffd60a;
+            padding-left: 1rem;
+        }
+ 
+        nav ul a {
+            color: white;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+ 
+        nav ul a:hover {
+            background-color: #ffd60a !important;
+            color: #1d506b !important;
+        }
+ 
+        nav ul li.active-link a {
+            background-color: #ffd60a;
+            color: #1d506b;
+        }
+ 
+        /* ---- HERO / HEADER ---- */
+        .hero-banner {
+            background-color: #33677d;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+ 
+        .hero-banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+ 
+        .hero-banner h2 {
+            font-size: 1.3rem;
+            font-weight: normal;
+            color: #ffd60a;
+            margin-bottom: 1.5rem;
+        }
+ 
+        .hero-btn {
+            background-color: #ffd60a !important;
+            color: #1d506b !important;
+            font-weight: bold;
+        }
+ 
+        .hero-btn:hover {
+            background-color: #e6c200 !important;
+        }
+ 
+        /* ---- SECTION TITLES ---- */
+        .section-title {
+            color: #1d506b;
+            font-size: 1.8rem;
+            font-weight: bold;
+            border-bottom: 3px solid #ffd60a;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+ 
+        /* ---- CARDS ---- */
+        .card {
+            border-radius: 8px;
+        }
+ 
+        .card .card-title {
+            background: rgba(29, 80, 107, 0.75);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+ 
+        .card .card-content p {
+            color: #555;
+        }
+ 
+        .card .card-action a {
+            color: #1d506b !important;
+            font-weight: 600;
+        }
+ 
+        .card .card-action a:hover {
+            color: #ff6b35 !important;
+            text-decoration: underline;
+        }
+ 
+        /* ---- CIRCULAR IMAGE ---- */
+        .circle-wrap {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 30px;
+        }
+ 
+        .circle-wrap img.circle {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 4px solid #1d506b;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+ 
+        /* ---- TABS ---- */
+        .tabs {
+            background-color: white;
+        }
+ 
+        .tabs .tab a {
+            color: #1d506b;
+            font-weight: 600;
+        }
+ 
+        .tabs .tab a:hover,
+        .tabs .tab a.active {
+            color: #1d506b;
+        }
+ 
+        .tabs .indicator {
+            background-color: #ffd60a;
+        }
+ 
+        .tab-panel {
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+ 
+        .tab-panel h5 {
+            color: #1d506b;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+        }
+ 
+        .tab-panel p {
+            color: #555;
+        }
+ 
+        .tab-icon {
+            vertical-align: middle;
+            color: #ffd60a;
+            margin-right: 6px;
+        }
+ 
+        /* ---- COLLECTION (tips list) ---- */
+        .collection {
+            border-radius: 8px;
+            border-color: #ddd;
+        }
+ 
+        .collection .collection-item {
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+ 
+        .collection .collection-item .material-icons {
+            color: #1d506b;
+            flex-shrink: 0;
+        }
+ 
+        .collection .collection-item:hover {
+            background-color: #f9f9f9;
+        }
+ 
+        /* ---- BLOCKQUOTE / QUOTE ---- */
+        .quote-panel {
+            background-color: #33677d;
+            color: white;
+            padding: 2rem;
+            border-left: 5px solid #ffd60a;
+            font-size: 1.3rem;
+            font-style: italic;
+            border-radius: 4px;
+            text-align: center;
+        }
+ 
+        .quote-panel p {
+            margin: 0;
+            color: #ffd60a;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            font-style: normal;
+        }
+ 
+        /* ---- TABLE ---- */
+        .mat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+ 
+        .mat-table th {
+            background-color: #1d506b;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+ 
+        .mat-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+            color: #555;
+        }
+ 
+        .mat-table tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+ 
+        .mat-table tr:hover td {
+            background-color: #f0f0f0;
+        }
+ 
+        /* ---- CONTENT SECTIONS ---- */
+        .mat-section {
+            background-color: white;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+ 
+        .mat-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+ 
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+ 
+        /* ---- VIDEO ---- */
+        .video-container {
+            margin: 1rem 0;
+        }
+ 
+        /* ---- FOOTER ---- */
+        footer.page-footer {
+            background-color: #1d506b;
+        }
+ 
+        footer.page-footer .footer-copyright {
+            background-color: #163d54;
+        }
+ 
+        footer.page-footer ul li a {
+            color: rgba(255,255,255,0.7);
+        }
+ 
+        footer.page-footer ul li a:hover {
+            color: #ffd60a;
+            text-decoration: none;
+        }
+ 
+        /* ---- RESPONSIVE NAV ---- */
+        @media (max-width: 992px) {
+            .sidenav {
+                background-color: #1d506b;
+            }
+            .sidenav li a {
+                color: white;
+                font-weight: 600;
+            }
+        }
+    </style>
+</head>
+<body>
+ 
+<!-- ========== NAVBAR ========== -->
+<nav>
+    <div class="nav-wrapper" style="max-width:1200px; margin:0 auto; padding:0 1rem;">
+        <a href="index.html" class="brand-logo">The Super Monkey Ball Fan Guide</a>
+        <a href="#" data-target="mobile-nav" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="characters.html">Characters</a></li>
+            <li><a href="strategy.html">Strategy</a></li>
+            <li class="active-link"><a href="materialize.html">Materialize</a></li>
+        </ul>
+    </div>
+</nav>
+ 
+<!-- Mobile sidenav -->
+<ul class="sidenav" id="mobile-nav">
+    <li><a href="index.html" style="color:white;">Home</a></li>
+    <li><a href="characters.html" style="color:white;">Characters</a></li>
+    <li><a href="strategy.html" style="color:white;">Strategy</a></li>
+    <li><a href="materialize.html" style="color:white;">Materialize</a></li>
+</ul>
+ 
+<!-- ========== HERO HEADER ========== -->
+<div class="hero-banner">
+    <h1>Materialize Showcase</h1>
+    <h2>Super Monkey Ball — Built with Materialize CSS</h2>
+    <a href="strategy.html" class="btn waves-effect waves-light hero-btn">
+        <i class="material-icons left">sports_esports</i>Strategy Guide
+    </a>
+    <a href="characters.html" class="btn waves-effect waves-light hero-btn" style="margin-left:12px;">
+        <i class="material-icons left">people</i>Characters
+    </a>
+</div>
+ 
+<!-- ========== MAIN CONTENT ========== -->
+<div style="max-width:1200px; margin:0 auto; padding:2rem;">
+ 
+    <!-- CIRCULAR IMAGE -->
+    <div class="mat-section" style="text-align:center;">
+        <span class="section-title">Meet AiAi</span>
+        <!-- Circular Image - Materialize Media -->
+        <div class="circle-wrap">
+            <img class="circle responsive-img"
+                 src="Images/aiai.gif"
+                 alt="AiAi — the fearless leader">
+        </div>
+        <p class="flow-text" style="max-width:700px; margin:0 auto; color:#555;">
+            AiAi is the bold, fearless leader of the monkey crew. He's the go-to character for beginners and veterans alike — perfectly balanced stats and a heart of gold (banana).
+        </p>
+    </div>
+ 
+    <!-- CHARACTER CARDS -->
+    <div class="mat-section">
+        <span class="section-title">The Crew</span>
+        <div class="row" style="margin-bottom:0;">
+ 
+            <div class="col s12 m6 l3">
+                <div class="card hoverable">
+                    <div class="card-image">
+                        <img src="https://bananapedia.wiki.gg/images/thumb/AiAiBR2024.webp/300px-AiAiBR2024.webp?881cb6" alt="AiAi" style="height:220px; object-fit:contain; background:#f9f9f9;">
+                        <span class="card-title">AiAi</span>
+                    </div>
+                    <div class="card-content">
+                        <p>The fearless leader. Balanced stats make him great for all skill levels.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="characters.html">Learn More</a>
+                    </div>
+                </div>
+            </div>
+ 
+            <div class="col s12 m6 l3">
+                <div class="card hoverable">
+                    <div class="card-image">
+                        <img src="Images/MeeMee_SMB3D-2.webp" alt="MeeMee" style="height:220px; object-fit:contain; background:#f9f9f9;">
+                        <span class="card-title">MeeMee</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Swift and graceful. MeeMee excels on narrow tracks that require finesse.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="characters.html">Learn More</a>
+                    </div>
+                </div>
+            </div>
+ 
+            <div class="col s12 m6 l3">
+                <div class="card hoverable">
+                    <div class="card-image">
+                        <img src="https://bananapedia.wiki.gg/images/GonGonBR24.webp?f4a90c" alt="GonGon" style="height:220px; object-fit:contain; background:#f9f9f9;">
+                        <span class="card-title">GonGon</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Strong and steady. GonGon's weight gives an edge on physics-heavy stages.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="characters.html">Learn More</a>
+                    </div>
+                </div>
+            </div>
+ 
+            <div class="col s12 m6 l3">
+                <div class="card hoverable">
+                    <div class="card-image">
+                        <img src="Images/Baby.jpg" alt="Baby" style="height:220px; object-fit:contain; background:#f9f9f9;">
+                        <span class="card-title">Baby</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Cute and speedy. Don't underestimate Baby — great pick for skilled players.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="characters.html">Learn More</a>
+                    </div>
+                </div>
+            </div>
+ 
+        </div>
+    </div>
+ 
+    <!-- CHARACTER STAT TABLE -->
+    <div class="mat-section">
+        <span class="section-title">Character Stats</span>
+        <table class="mat-table">
+            <tr>
+                <th>Character</th>
+                <th>Speed</th>
+                <th>Balance</th>
+                <th>Power</th>
+            </tr>
+            <tr>
+                <td>AiAi</td>
+                <td>High</td>
+                <td>High</td>
+                <td>Medium</td>
+            </tr>
+            <tr>
+                <td>MeeMee</td>
+                <td>Very High</td>
+                <td>Very High</td>
+                <td>Low</td>
+            </tr>
+            <tr>
+                <td>GonGon</td>
+                <td>Medium</td>
+                <td>Medium</td>
+                <td>Very High</td>
+            </tr>
+            <tr>
+                <td>Baby</td>
+                <td>High</td>
+                <td>Low</td>
+                <td>High</td>
+            </tr>
+        </table>
+    </div>
+ 
+    <!-- TABS: GAME MODES -->
+    <div class="mat-section">
+        <span class="section-title">Game Modes</span>
+        <div class="row" style="margin-bottom:0;">
+            <div class="col s12">
+                <ul class="tabs z-depth-1">
+                    <li class="tab col s3"><a class="active" href="#story">Story</a></li>
+                    <li class="tab col s3"><a href="#banana">Golden Banana</a></li>
+                    <li class="tab col s3"><a href="#time">Time Attack</a></li>
+                    <li class="tab col s3"><a href="#party">Party Games</a></li>
+                </ul>
+            </div>
+            <div id="story" class="col s12">
+                <div class="tab-panel">
+                    <h5><i class="material-icons tab-icon">star</i>Story Mode</h5>
+                    <p>Guide AiAi and the crew through 10 worlds of increasingly tricky obstacle courses. Each world ends with a bonus stage where you can earn extra lives. The perfect place to start.</p>
+                </div>
+            </div>
+            <div id="banana" class="col s12">
+                <div class="tab-panel">
+                    <h5><i class="material-icons tab-icon">emoji_nature</i>Golden Banana Mode</h5>
+                    <p>Take on 10 stages and collect every golden banana in each one. Hidden paths, tight time limits, and tricky placements make this mode a serious test of skill and exploration.</p>
+                </div>
+            </div>
+            <div id="time" class="col s12">
+                <div class="tab-panel">
+                    <h5><i class="material-icons tab-icon">timer</i>Time Attack</h5>
+                    <p>Race through preset courses as fast as possible. Speed runs, optimal routing, and muscle memory are the keys to dominating the leaderboards.</p>
+                </div>
+            </div>
+            <div id="party" class="col s12">
+                <div class="tab-panel">
+                    <h5><i class="material-icons tab-icon">celebration</i>Party Games</h5>
+                    <p>Mini-games like Monkey Race, Monkey Fight, and Monkey Target let you compete with friends. Great for casual play and friendly rivalry.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <!-- VIDEO EMBED -->
+    <div class="mat-section">
+        <span class="section-title">Watch &amp; Learn</span>
+        <p style="color:#555;">Check out this Super Monkey Ball Banana Mania gameplay to see the action in motion:</p>
+        <!-- Materialize Responsive Video Embed -->
+        <div class="video-container">
+            <iframe width="853" height="480"
+                src="https://www.youtube.com/embed/OdSIN9FuKEc"
+                title="Super Monkey Ball Banana Mania Gameplay"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <p style="color:#999; font-size:0.9rem; margin-top:8px;">Super Monkey Ball Banana Mania — official gameplay showcase.</p>
+    </div>
+ 
+    <!-- QUICK TIPS COLLECTION -->
+    <div class="mat-section">
+        <span class="section-title">Quick Tips</span>
+        <ul class="collection">
+            <li class="collection-item">
+                <i class="material-icons">check_circle</i>
+                Use small, gentle tilts — big inputs cause you to lose control fast.
+            </li>
+            <li class="collection-item">
+                <i class="material-icons">check_circle</i>
+                Study the stage layout before moving — plan your route in advance.
+            </li>
+            <li class="collection-item">
+                <i class="material-icons">check_circle</i>
+                Tilt opposite your momentum before sharp turns to brake properly.
+            </li>
+            <li class="collection-item">
+                <i class="material-icons">check_circle</i>
+                Different monkeys suit different stages — experiment with all four!
+            </li>
+            <li class="collection-item">
+                <i class="material-icons">check_circle</i>
+                Watch speedrunner videos to find shortcuts and smarter routes.
+            </li>
+            <li class="collection-item">
+                <i class="material-icons">check_circle</i>
+                Explore side paths off the main route to find hidden golden bananas.
+            </li>
+        </ul>
+    </div>
+ 
+    <!-- FEATURED QUOTE -->
+    <div class="mat-section">
+        <div class="quote-panel">
+            <i class="material-icons" style="font-size:2.5rem; color:#ffd60a;">format_quote</i>
+            <br>
+            "Roll fast, stay balanced, and never fall!"
+            <p>— The Super Monkey Ball Motto</p>
+        </div>
+    </div>
+ 
+</div><!-- end main container -->
+ 
+<!-- ========== FOOTER ========== -->
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l4 s12">
+                <h5 style="color:#ffd60a;">The Super Monkey Ball Fan Guide</h5>
+                <p class="grey-text text-lighten-3">Your ultimate source for Super Monkey Ball tips, characters, and strategies.</p>
+            </div>
+            <div class="col l4 s12">
+                <h5 class="white-text">Navigate</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="characters.html">Characters</a></li>
+                    <li><a href="strategy.html">Strategy Guide</a></li>
+                    <li><a href="materialize.html">Materialize</a></li>
+                </ul>
+            </div>
+            <div class="col l4 s12">
+                <h5 class="white-text">Built With</h5>
+                <p class="grey-text text-lighten-3">Materialize CSS Framework — Material Design for the Web.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            &copy; 2026 Super Monkey Ball Fan Page
+        </div>
+    </div>
+</footer>
+ 
+<!-- Materialize JS CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var tabs = document.querySelectorAll('.tabs');
+        M.Tabs.init(tabs);
+ 
+        var sidenav = document.querySelectorAll('.sidenav');
+        M.Sidenav.init(sidenav);
+    });
+</script>
+ 
+</body>
+</html>
